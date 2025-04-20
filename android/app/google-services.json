@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "146182478778",
+    "project_id": "ev-connect-20310",
+    "storage_bucket": "ev-connect-20310.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146182478778:android:17b9ea72ecf6bbe93f1b83",
+        "android_client_info": {
+          "package_name": "com.example.evconnect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDex9XFMQ3lVY0DMSby08qZAFf_wFtC340"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
