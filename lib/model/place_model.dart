@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore: unused_import
 import 'package:flutter/material.dart';
 
 Future<void> savePlacesToFirebase() async {
@@ -36,6 +37,7 @@ class Place {
     required this.image,
     required this.rating,
     required this.time,
+    required this.price,
     required this.address,
     required this.vendor,
     required this.vendorProfile,
@@ -52,6 +54,7 @@ class Place {
       'image': image,
       'rating': rating,
       'time': time,
+      'price': price,
       'address': address,
       'vendor': vendor,
       'vendorProfile': vendorProfile,
@@ -65,9 +68,60 @@ class Place {
 }
 
 final List<Place> listOfPlace = [
-  Place{
+  Place(
     isActive: true,
-    title: "The Forest SPA",
-    image: 
-  }
-]
+    title: "The Forest SPA Charging Station",
+    image: "https://ibb.co/r24BWF35",
+    rating: 4.5,
+    time: "11AM-6PM",
+    price: 17,
+    address: "Sector 93, Noida",
+    vendor: "Jignesh",
+    vendorProfile: "https://ibb.co/HZChXdZ",
+    review: 126,
+    chargerType:"AC(fast)",
+    latitude: 28.51399217344444,
+    longitude: 77.39209988640668,
+    imageUrls: [
+      "https://ibb.co/4gZwZCzS",
+      "https://ibb.co/nMHmmTJQ",
+      "https://ibb.co/r24BWF35",
+    ],
+  ),
+  Place(
+    isActive: true,
+    title: "Sector 62 EV Hub",
+    image: "https://ibb.co/PZ7cTLy2",
+    rating: 4.2,
+    time: "9AM–9PM",
+    price: 13,
+    address: "Sector 62, Noida",
+    vendor: "Anjali",
+    vendorProfile: "https://ibb.co/anjaliprofile",
+    review: 98,
+    chargerType:"AC(slow)",
+    latitude: 28.6100,
+    longitude: 77.3700,
+    imageUrls: ["https://ibb.co/PZ7cTLy2", "https://ibb.co/dFwL6ts"],
+  ),
+  Place(
+    isActive: true,
+    title: "Sector 53 Charging Point",
+    image: "https://ibb.co/Lmb38sj",
+    rating: 4.0,
+    time: "10AM–8PM",
+    price: 14,
+    address: "Sector 53, Noida",
+    vendor: "Rahul",
+    vendorProfile: "https://ibb.co/rahulprofile",
+    review: 85,
+    chargerType:"DC",
+    latitude: 28.5911007,
+    longitude: 77.3628053,
+    imageUrls: [
+      "https://ibb.co/Lmb38sj",
+      "https://ibb.co/PZ7cTLy2",
+      "https://ibb.co/whH7qgnB",
+    ],
+  ),
+];
