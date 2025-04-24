@@ -111,7 +111,7 @@ final List<Place> listOfPlace = [
     rating: 4.0,
     time: "10AM–8PM",
     price: 14,
-    address: "Sector 53, Noida",
+    address: "Sector  Noida",
     vendor: "Rahul",
     vendorProfile: "https://ibb.co/rahulprofile",
     review: 85,
