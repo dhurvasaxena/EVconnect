@@ -1,3 +1,5 @@
+import 'package:evconnect/Authentication/google_authentication.dart';
+import 'package:evconnect/view/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -83,12 +85,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       Colors.blue,
                       30,
                     ),
-                    socialIcons(
-                      size,
-                      FontAwesomeIcons.google,
-                      "Continue with Google",
-                      Colors.pink,
-                      30,
+                    InkWell(
+                      onTap: () async {
+                        await FirebaseAuthServices().signInWithGoogle();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AppMainScreen(),
+                          ),
+                        );
+                      },
+                      child: socialIcons(
+                        size,
+                        FontAwesomeIcons.google,
+                        "Continue with Google",
+                        Colors.pink,
+                        30,
+                      ),
                     ),
                     socialIcons(
                       size,
@@ -100,9 +113,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     socialIcons(
                       size,
                       Icons.email_outlined,
-                      "Continue with email",
+                      "Continue with Email",
                       Colors.black,
                       30,
+                    ),
+                    const SizedBox(height: 10),
+                    const Center(
+                      child: Text(
+                        "Need Help?",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -128,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             SizedBox(width: size.width * 0.05),
             Icon(icon, color: color, size: iconSize),
-            SizedBox(width: size.width * 0.18),
+            SizedBox(width: size.width * 0.15),
             Text(
               name,
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),

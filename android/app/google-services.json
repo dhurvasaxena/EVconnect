@@ -12,7 +12,20 @@
           "package_name": "com.example.evconnect"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "146182478778-h8bp5e50cp1ats3hab9dm9h4qqoput7t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.evconnect",
+            "certificate_hash": "23fe236ed104b2b071b557eb2b64a96aaacfa098"
+          }
+        },
+        {
+          "client_id": "146182478778-rtcco46vjbfjmuji97unhdvdies548cl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDex9XFMQ3lVY0DMSby08qZAFf_wFtC340"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146182478778-rtcco46vjbfjmuji97unhdvdies548cl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
