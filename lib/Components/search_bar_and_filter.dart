@@ -36,6 +36,7 @@ class SearchBarAndFilter extends StatelessWidget {
                     ),
                     SizedBox(width: 8),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Need a Charging Spot?",
