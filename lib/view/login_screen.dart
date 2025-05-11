@@ -44,20 +44,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     // for phone no field
                     phoneNoField(size),
                     SizedBox(height: size.height * 0.03),
-                    Container(
-                      width: size.width,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.pink,
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Continue",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const AppMainScreen()),
+                        );
+                      },
+                    child : Container(
+                        width: size.width,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.pink,
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Continue",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
@@ -87,13 +95,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     InkWell(
                       onTap: () async {
-                        await FirebaseAuthServices().signInWithGoogle();
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AppMainScreen(),
-                          ),
-                        );
+                        final userCredential = await FirebaseAuthServices().signInWithGoogle();
+                        if (userCredential != null) {
+                          if (mounted) {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AppMainScreen(),
+                              ),
+                            );
+                          }
+                        } else {
+                          // Optional: Show error feedback
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Google Sign-In failed. Please try again.")),
+                          );
+                        }
                       },
                       child: socialIcons(
                         size,

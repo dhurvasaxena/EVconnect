@@ -7,6 +7,7 @@ class FirebaseAuthServices {
 
   Future<UserCredential?> signInWithGoogle() async {
     try {
+      
       // Trigger the Google Sign-In flow
       final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
       if (googleSignInAccount == null) return null; // User canceled sign-in
