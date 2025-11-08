@@ -1,5 +1,6 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:evconnect/view/place_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class DisplayPlace extends StatefulWidget {
@@ -41,7 +42,14 @@ class _DisplayPlaceState extends State<DisplayPlace> {
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => PlaceDetailScreen(place: place),
+                      ),
+                    );
+                  },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -73,6 +81,10 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                               children: [
                                 place['isActive'] == true
                                     ? Container(
+                                      padding: const EdgeInsets.symmetric(
+                                      vertical: 5,
+                                      horizontal: 12,
+                                      ),
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(40),
@@ -129,10 +141,7 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                       ),
                       Text(
                         place['time'],
-                        style: TextStyle(
-                        fontSize: 16.5,
-                        color: Colors.black54,
-                        ),
+                        style: TextStyle(fontSize: 16.5, color: Colors.black54),
                       ),
                       SizedBox(height: size.height * 0.007),
                       RichText(
@@ -155,7 +164,7 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                           ],
                         ),
                       ),
-                      SizedBox(height: size.height*0.03),
+                      SizedBox(height: size.height * 0.03),
                     ],
                   ),
                 ),
@@ -163,7 +172,7 @@ class _DisplayPlaceState extends State<DisplayPlace> {
             },
           );
         }
-        
+
         return const Center(child: CircularProgressIndicator());
       },
     );

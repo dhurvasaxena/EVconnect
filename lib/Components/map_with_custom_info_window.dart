@@ -1,3 +1,5 @@
+
+
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evconnect/Components/my_icon_button.dart';
@@ -151,6 +153,31 @@ class _MapWithCustomInfoWindowState extends State<MapWithCustomInfoWindow> {
                                   const SizedBox(width: 5),
                                   Text(data['rating'].toString()),
                                 ],
+                              ),
+                              
+                              Text(
+                                data['time'],
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black54,
+                                ),
+                              ),
+                              Text.rich(
+                                TextSpan(
+                                  text: '\₹${data['price']}',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  children: const [
+                                    TextSpan(
+                                      text: "/kwh",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                      )
+                                    )
+                                  ]
+                                ),
                               ),
                             ],
                           ),

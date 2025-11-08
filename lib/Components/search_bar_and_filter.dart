@@ -43,26 +43,10 @@ class SearchBarAndFilter extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
+                            color: Colors.black38,
                           ),
                         ),
-                        SizedBox(
-                          height: 20,
-                          width: 200,
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                              ),
-                              hintText: "Find a spot",
-                              hintStyle: TextStyle(
-                                color: Colors.black38,
-                                fontSize: 12,
-                              ),
-                              filled: true, 
-                              fillColor: Colors.white,
-                            ),
-                          ),
-                        ),
+                        
                       ],
                     ),
                   ],

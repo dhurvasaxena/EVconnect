@@ -26,12 +26,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
           children: [
             const SearchBarAndFilter(),
             listOfCatergoryItems(size),
-            Expanded(
+            const Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const SizedBox(height: 15,),
-                    const DisplayPlace(),
+                     SizedBox(height: 15,),
+                     DisplayPlace(),
                   ],
                 ),
               ),
@@ -92,10 +92,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                       streamSnapshot
                                           .data!
                                           .docs[index]['image'],
-                                      color:
-                                          selectedIndex == index
-                                              ? Colors.black
-                                              : Colors.black45,
+                                      
                                     ),
                                   ),
                                   const SizedBox(height: 5),
