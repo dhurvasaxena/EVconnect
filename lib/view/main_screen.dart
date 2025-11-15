@@ -1,4 +1,6 @@
 import 'package:evconnect/view/explore_screen.dart';
+import 'package:evconnect/view/profile_page.dart';
+import 'package:evconnect/view/wishlists.dart';
 import 'package:flutter/material.dart';
 
 class AppMainScreen extends StatefulWidget {
@@ -16,10 +18,10 @@ class _AppMainScreenState extends State<AppMainScreen> {
   void initState() {
     page = [
       const ExploreScreen(),
+      const Wishlists(),
       const Scaffold(),
       const Scaffold(),
-      const Scaffold(),
-      const Scaffold(),
+      const ProfilePage(),
     ];
     super.initState();
   }

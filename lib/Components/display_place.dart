@@ -1,7 +1,9 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:evconnect/provider/favourite_provider.dart';
 import 'package:evconnect/view/place_detail_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DisplayPlace extends StatefulWidget {
   const DisplayPlace({super.key});
@@ -16,6 +18,7 @@ class _DisplayPlaceState extends State<DisplayPlace> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final Provider =FavouriteProvider.of(context);
     return StreamBuilder(
       stream: placeCollection.snapshots(),
       builder: (context, streamSnapshot) {
@@ -79,24 +82,43 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                             right: 15,
                             child: Row(
                               children: [
-                                place['isActive'] == true
-                                    ? Container(
-                                      padding: const EdgeInsets.symmetric(
+                                // Always show a badge for each listing. Use the
+                                // place's rating to choose a short badge label.
+                                () {
+                                  final dynamic _rawRating = place['rating'];
+                                  double _ratingValue = 0.0;
+                                  if (_rawRating is num) {
+                                    _ratingValue = _rawRating.toDouble();
+                                  } else if (_rawRating is String) {
+                                    _ratingValue =
+                                        double.tryParse(_rawRating) ?? 0.0;
+                                  }
+                                  final String _badgeText =
+                                      _ratingValue >= 4.5
+                                          ? 'Top-Rated'
+                                          : _ratingValue >= 4.0
+                                          ? 'Verified'
+                                          : _ratingValue >= 3.5
+                                          ? 'Popular'
+                                          : 'Private';
+
+                                  return Container(
+                                    padding: const EdgeInsets.symmetric(
                                       vertical: 5,
                                       horizontal: 12,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(40),
+                                    ),
+                                    child: Text(
+                                      _badgeText,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(40),
-                                      ),
-                                      child: Text(
-                                        "Featured",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    )
-                                    : SizedBox(width: size.width * 0.03),
+                                    ),
+                                  );
+                                }(),
                                 const Spacer(),
                                 // fav button
                                 Stack(
@@ -108,11 +130,15 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                                       color: Colors.white,
                                     ),
                                     InkWell(
-                                      onTap: () {},
-                                      child: const Icon(
+                                      onTap: () {
+                                        Provider.toggleFavourite(place);
+                                      },
+                                      child: Icon(
                                         Icons.favorite,
                                         size: 30,
-                                        color: Colors.black54,
+                                        color: Provider.isExist(place)
+                                            ? Colors.red
+                                            : Colors.black54,
                                       ),
                                     ),
                                   ],
